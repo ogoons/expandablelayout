@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+        android:id="@+id/expandable_layout"
+        app:duration="500"
+        app:parallax="0.5"
+        app:expanded="false"
+        android:orientation="vertical"
+        android:background="@android:color/darker_gray"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Hello, HagoExpandableLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+
+    <Button
+        android:id="@+id/btn_toggle"
+        android:text="Toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
