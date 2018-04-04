@@ -8,24 +8,93 @@
     tools:context=".MainActivity">
 
     <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
-        android:id="@+id/expandable_layout"
+        android:id="@+id/expandable_layout_1"
         app:duration="500"
         app:parallax="0.5"
         app:expanded="false"
         android:orientation="vertical"
-        android:background="@android:color/darker_gray"
+        android:background="@android:color/holo_orange_dark"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Hello, HagoExpandableLayout"
+            android:text="확장/축소: 점점 느려지는 움직임"
             android:layout_width="wrap_content"
             android:layout_height="100dp" />
 
     </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
 
     <Button
-        android:id="@+id/btn_toggle"
+        android:id="@+id/btn_toggle_1"
+        android:text="Toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+        android:id="@+id/expandable_layout_2"
+        app:duration="500"
+        app:parallax="0.5"
+        app:expanded="false"
+        android:orientation="vertical"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="확장: 고정된 사이즈를 벗어났다 돌아옴\n축소:점점 느려지는 움직임"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+
+    <Button
+        android:id="@+id/btn_toggle_2"
+        android:text="Toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+        android:id="@+id/expandable_layout_3"
+        app:duration="500"
+        app:parallax="0.5"
+        app:expanded="false"
+        android:orientation="vertical"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="확장/축소: 끝에 도달하면 튕김"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+
+    <Button
+        android:id="@+id/btn_toggle_3"
+        android:text="Toggle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+        android:id="@+id/expandable_layout_4"
+        app:duration="500"
+        app:parallax="0.5"
+        app:expanded="false"
+        android:orientation="horizontal"
+        android:background="@android:color/holo_orange_dark"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="가로 확장/축소"
+            android:layout_width="wrap_content"
+            android:layout_height="100dp" />
+
+    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+
+    <Button
+        android:id="@+id/btn_toggle_4"
         android:text="Toggle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />

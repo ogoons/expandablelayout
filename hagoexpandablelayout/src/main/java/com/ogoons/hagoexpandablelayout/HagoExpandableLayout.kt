@@ -9,6 +9,7 @@ import android.os.Parcelable
 import android.util.AttributeSet
 import android.view.View
 import android.view.animation.DecelerateInterpolator
+import android.view.animation.Interpolator
 import android.widget.FrameLayout
 import android.widget.LinearLayout
 
@@ -50,7 +51,7 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
 
     private var state: State? = null
 
-    var interpolator = DecelerateInterpolator()
+    var interpolator: Interpolator = DecelerateInterpolator()
 
     private var animator: ValueAnimator? = null
 
@@ -93,7 +94,7 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
 
         val size = if (orientation == LinearLayout.HORIZONTAL) width else height
 
-        visibility = if (expansion == 0f && size == 0) View.GONE else View.VISIBLE
+        visibility = if (expansion == 0f && size == 0) View.INVISIBLE else View.VISIBLE
 
         val expansionDelta = size - Math.round(size * expansion!!)
         if (parallax!! > 0) {
@@ -173,7 +174,7 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
         else if (delta > 0)
             state = State.EXPANDING
 
-        visibility = if (state == State.COLLAPSED) View.GONE else View.VISIBLE
+        visibility = if (state == State.COLLAPSED) View.INVISIBLE else View.VISIBLE
 
         this.expansion = expansion
 
