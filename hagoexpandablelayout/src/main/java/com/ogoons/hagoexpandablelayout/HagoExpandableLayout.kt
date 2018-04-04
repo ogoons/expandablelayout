@@ -164,14 +164,14 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
 
         val delta = expansion - this.expansion!!
 
-        state = if (expansion == COLLAPSED)
-                    State.COLLAPSED
-                else if (expansion == EXPANDED)
-                    State.EXPANDED
-                else if (delta < 0)
-                    State.COLLAPSING
-                else
-                    State.EXPANDING
+        if (expansion == COLLAPSED)
+            state = State.COLLAPSED
+        else if (expansion == EXPANDED)
+            state = State.EXPANDED
+        else if (delta < 0)
+            state = State.COLLAPSING
+        else if (delta > 0)
+            state = State.EXPANDING
 
         visibility = if (state == State.COLLAPSED) View.GONE else View.VISIBLE
 
@@ -183,10 +183,8 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
     }
 
     private fun animateExpansion(destExpansion: Float) {
-        if (animator != null) {
-            animator!!.cancel()
-            animator = null
-        }
+        animator?.cancel()
+        animator = null
 
         animator = ValueAnimator.ofFloat(expansion!!, destExpansion)
         animator!!.interpolator = interpolator
