@@ -7,7 +7,7 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+    <com.ogoons.expandablelayout.ExpandableLayout
         android:id="@+id/expandable_layout_1"
         app:duration="500"
         app:parallax="0.5"
@@ -22,7 +22,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp" />
 
-    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+    </com.ogoons.expandablelayout.ExpandableLayout>
 
     <Button
         android:id="@+id/btn_toggle_1"
@@ -30,7 +30,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+    <com.ogoons.expandablelayout.ExpandableLayout
         android:id="@+id/expandable_layout_2"
         app:duration="500"
         app:parallax="0.5"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp" />
 
-    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+    </com.ogoons.expandablelayout.ExpandableLayout>
 
     <Button
         android:id="@+id/btn_toggle_2"
@@ -53,7 +53,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+    <com.ogoons.expandablelayout.ExpandableLayout
         android:id="@+id/expandable_layout_3"
         app:duration="500"
         app:parallax="0.5"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp" />
 
-    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+    </com.ogoons.expandablelayout.ExpandableLayout>
 
     <Button
         android:id="@+id/btn_toggle_3"
@@ -76,7 +76,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 
-    <com.ogoons.hagoexpandablelayout.HagoExpandableLayout
+    <com.ogoons.expandablelayout.ExpandableLayout
         android:id="@+id/expandable_layout_4"
         app:duration="500"
         app:parallax="0.5"
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="100dp" />
 
-    </com.ogoons.hagoexpandablelayout.HagoExpandableLayout>
+    </com.ogoons.expandablelayout.ExpandableLayout>
 
     <Button
         android:id="@+id/btn_toggle_4"

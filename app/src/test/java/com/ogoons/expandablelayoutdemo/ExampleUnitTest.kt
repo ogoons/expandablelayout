@@ -1,4 +1,4 @@
-package com.ogoons.hagoexpandablelayoutdemo
+package com.ogoons.expandablelayoutdemo
 
 import org.junit.Test
 

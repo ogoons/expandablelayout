@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="HagoExpandableLayout">
+    <declare-styleable name="ExpandableLayout">
         <attr name="duration" format="integer" />
         <attr name="parallax" format="float" />
         <attr name="expanded" format="boolean" />

@@ -1,4 +1,4 @@
-package com.ogoons.hagoexpandablelayout
+package com.ogoons.expandablelayout
 
 import android.animation.Animator
 import android.animation.ValueAnimator
@@ -14,10 +14,9 @@ import android.widget.FrameLayout
 import android.widget.LinearLayout
 
 /**
- * Created by charles on 2018. 4. 3..
+ * Created by ogons on 2018. 4. 3..
  */
-class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
-
+class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
     companion object {
         const val HORIZONTAL = 0
         const val VERTICAL = 1
@@ -58,11 +57,11 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
     var listener: OnExpansionChangeListener? = null
 
     init {
-        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.HagoExpandableLayout)
-        duration = typedArray.getInt(R.styleable.HagoExpandableLayout_duration, DEF_DURATION)
-        parallax = typedArray.getFloat(R.styleable.HagoExpandableLayout_parallax, DEF_PARALLAX)
-        expansion = if (typedArray.getBoolean(R.styleable.HagoExpandableLayout_expanded, DEF_EXPANDED)) EXPANDED else COLLAPSED
-        orientation = typedArray.getInt(R.styleable.HagoExpandableLayout_android_orientation, DEF_ORIENTATION)
+        val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout)
+        duration = typedArray.getInt(R.styleable.ExpandableLayout_duration, DEF_DURATION)
+        parallax = typedArray.getFloat(R.styleable.ExpandableLayout_parallax, DEF_PARALLAX)
+        expansion = if (typedArray.getBoolean(R.styleable.ExpandableLayout_expanded, DEF_EXPANDED)) EXPANDED else COLLAPSED
+        orientation = typedArray.getInt(R.styleable.ExpandableLayout_android_orientation, DEF_ORIENTATION)
         typedArray.recycle()
 
         state = if (isExpanded()) State.EXPANDED else State.COLLAPSED
@@ -187,18 +186,19 @@ class HagoExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(
         animator?.cancel()
         animator = null
 
-        animator = ValueAnimator.ofFloat(expansion!!, destExpansion)
-        animator!!.interpolator = interpolator
-        animator!!.duration = duration!!.toLong()
+        animator = ValueAnimator.ofFloat(expansion!!, destExpansion).apply {
+            interpolator = interpolator
+            duration = duration!!.toLong()
 
-        // 확장/축소의 변화가 트리거되는 리스너의 콜백
-        animator!!.addUpdateListener { valueAnimator ->
-            setExpansion(valueAnimator.animatedValue as Float)
+            // 확장/축소의 변화가 트리거되는 리스너의 콜백
+            addUpdateListener { valueAnimator ->
+                setExpansion(valueAnimator.animatedValue as Float)
+            }
+
+            // state를 설정할 용도의 리스너 장착
+            addListener(ExpansionAnimationListener(destExpansion))
+            start()
         }
-
-        // state를 설정할 용도의 리스너 장착
-        animator!!.addListener(ExpansionAnimationListener(destExpansion))
-        animator!!.start()
     }
 
     fun setOrientation(orientation: Int): Boolean {

@@ -1,4 +1,4 @@
-package com.ogoons.hagoexpandablelayout;
+package com.ogoons.expandablelayout;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("com.ogoons.hagoexpandablelayout.test", appContext.getPackageName());
+        assertEquals("com.ogoons.expandablelayout.test", appContext.getPackageName());
     }
 }
