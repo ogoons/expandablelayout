@@ -187,8 +187,8 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
         animator = null
 
         animator = ValueAnimator.ofFloat(expansion!!, destExpansion).apply {
-            interpolator = interpolator
-            duration = duration!!.toLong()
+            interpolator = this@ExpandableLayout.interpolator
+            duration = this@ExpandableLayout.duration?.toLong() ?: DEF_DURATION.toLong()
 
             // 확장/축소의 변화가 트리거되는 리스너의 콜백
             addUpdateListener { valueAnimator ->

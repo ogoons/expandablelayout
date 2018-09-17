@@ -1,4 +1,4 @@
-# hago-expandable-layout
+# expandable-layout
 Android Expandable Layout
 
 ## Demo
