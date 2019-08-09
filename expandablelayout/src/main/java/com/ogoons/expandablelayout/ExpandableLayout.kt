@@ -204,19 +204,19 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
             private val destExpansion: Float
     ) : Animator.AnimatorListener {
 
-        private var isCancelled = false
+        private var isCanceled = false
 
         override fun onAnimationRepeat(animation: Animator?) {
         }
 
         override fun onAnimationEnd(animation: Animator?) {
-            if (!isCancelled) {
+            if (!isCanceled) {
                 state = if (destExpansion == COLLAPSED) State.COLLAPSED else State.EXPANDED
             }
         }
 
         override fun onAnimationCancel(animation: Animator?) {
-            isCancelled = true
+            isCanceled = true
         }
 
         override fun onAnimationStart(animation: Animator?) {
