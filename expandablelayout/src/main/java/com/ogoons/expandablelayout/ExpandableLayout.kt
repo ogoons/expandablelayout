@@ -12,26 +12,14 @@ import android.view.animation.DecelerateInterpolator
 import android.view.animation.Interpolator
 import android.widget.FrameLayout
 import android.widget.LinearLayout
+import kotlin.math.max
+import kotlin.math.min
+import kotlin.math.roundToInt
 
 /**
- * Created by ogons on 2018. 4. 3..
+ * Created by ogoons on 2018. 4. 3..
  */
 class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(context, attrs) {
-    companion object {
-        const val HORIZONTAL = 0
-        const val VERTICAL = 1
-
-        private const val DEF_DURATION = 500
-        private const val DEF_PARALLAX = 1f
-        private const val DEF_EXPANDED = false
-        private const val DEF_ORIENTATION = VERTICAL
-
-        private const val EXPANDED = 1f
-        private const val COLLAPSED = 0f
-
-        private const val ARG_SUPER_STATE = "super_state"
-        private const val ARG_EXPANSION = "expansion"
-    }
 
     enum class State {
         COLLAPSING,
@@ -58,10 +46,10 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
 
     init {
         val typedArray = context.obtainStyledAttributes(attrs, R.styleable.ExpandableLayout)
-        duration = typedArray.getInt(R.styleable.ExpandableLayout_duration, DEF_DURATION)
-        parallax = typedArray.getFloat(R.styleable.ExpandableLayout_parallax, DEF_PARALLAX)
-        expansion = if (typedArray.getBoolean(R.styleable.ExpandableLayout_expanded, DEF_EXPANDED)) EXPANDED else COLLAPSED
-        orientation = typedArray.getInt(R.styleable.ExpandableLayout_android_orientation, DEF_ORIENTATION)
+        duration = typedArray.getInt(R.styleable.ExpandableLayout_duration, DEFAULT_DURATION)
+        parallax = typedArray.getFloat(R.styleable.ExpandableLayout_parallax, DEFAULT_PARALLAX)
+        expansion = if (typedArray.getBoolean(R.styleable.ExpandableLayout_expanded, DEFAULT_EXPANDED)) EXPANDED else COLLAPSED
+        orientation = typedArray.getInt(R.styleable.ExpandableLayout_android_orientation, DEFAULT_ORIENTATION)
         typedArray.recycle()
 
         state = if (isExpanded()) State.EXPANDED else State.COLLAPSED
@@ -95,7 +83,7 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
 
         visibility = if (expansion == 0f && size == 0) View.INVISIBLE else View.VISIBLE
 
-        val expansionDelta = size - Math.round(size * expansion!!)
+        val expansionDelta = size - (size * expansion!!).roundToInt()
         if (parallax!! > 0) {
             val parallaxDelta = expansionDelta * parallax!!
             for (i in 0 until childCount) {
@@ -120,9 +108,7 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
     }
 
     override fun onConfigurationChanged(newConfig: Configuration?) {
-        if (animator != null) {
-            animator!!.cancel()
-        }
+        animator?.cancel()
         super.onConfigurationChanged(newConfig)
     }
 
@@ -164,14 +150,12 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
 
         val delta = expansion - this.expansion!!
 
-        if (expansion == COLLAPSED)
-            state = State.COLLAPSED
-        else if (expansion == EXPANDED)
-            state = State.EXPANDED
-        else if (delta < 0)
-            state = State.COLLAPSING
-        else if (delta > 0)
-            state = State.EXPANDING
+        when {
+            expansion == COLLAPSED -> state = State.COLLAPSED
+            expansion == EXPANDED -> state = State.EXPANDED
+            delta < 0 -> state = State.COLLAPSING
+            delta > 0 -> state = State.EXPANDING
+        }
 
         visibility = if (state == State.COLLAPSED) View.INVISIBLE else View.VISIBLE
 
@@ -188,7 +172,7 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
 
         animator = ValueAnimator.ofFloat(expansion!!, destExpansion).apply {
             interpolator = this@ExpandableLayout.interpolator
-            duration = this@ExpandableLayout.duration?.toLong() ?: DEF_DURATION.toLong()
+            duration = this@ExpandableLayout.duration?.toLong() ?: DEFAULT_DURATION.toLong()
 
             // 확장/축소의 변화가 트리거되는 리스너의 콜백
             addUpdateListener { valueAnimator ->
@@ -208,34 +192,52 @@ class ExpandableLayout(context: Context, attrs: AttributeSet) : FrameLayout(cont
     }
 
     fun setParallax(parallax: Float) {
-        this.parallax = Math.min(EXPANDED, Math.max(COLLAPSED, parallax))
+        this.parallax = min(EXPANDED, max(COLLAPSED, parallax))
     }
 
     interface OnExpansionChangeListener {
+
         fun onExpansionChanged(expansion: Float, state: State)
     }
 
     inner class ExpansionAnimationListener(
             private val destExpansion: Float
     ) : Animator.AnimatorListener {
-        private var canceled = false
 
-        override fun onAnimationRepeat(p0: Animator?) {
+        private var isCancelled = false
+
+        override fun onAnimationRepeat(animation: Animator?) {
         }
 
-        override fun onAnimationEnd(p0: Animator?) {
-            if (!canceled) {
+        override fun onAnimationEnd(animation: Animator?) {
+            if (!isCancelled) {
                 state = if (destExpansion == COLLAPSED) State.COLLAPSED else State.EXPANDED
             }
         }
 
-        override fun onAnimationCancel(p0: Animator?) {
-            canceled = true
+        override fun onAnimationCancel(animation: Animator?) {
+            isCancelled = true
         }
 
-        override fun onAnimationStart(p0: Animator?) {
+        override fun onAnimationStart(animation: Animator?) {
             state = if (destExpansion == COLLAPSED) State.COLLAPSING else State.EXPANDING
         }
     }
 
+    companion object {
+
+        const val HORIZONTAL = 0
+        const val VERTICAL = 1
+
+        private const val DEFAULT_DURATION = 500
+        private const val DEFAULT_PARALLAX = 1F
+        private const val DEFAULT_EXPANDED = false
+        private const val DEFAULT_ORIENTATION = VERTICAL
+
+        private const val EXPANDED = 1F
+        private const val COLLAPSED = 0F
+
+        private const val ARG_SUPER_STATE = "super_state"
+        private const val ARG_EXPANSION = "expansion"
+    }
 }
