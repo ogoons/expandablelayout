@@ -1,8 +1,8 @@
 package com.ogoons.expandablelayoutdemo
 
 import android.os.Bundle
-import android.support.v4.view.animation.FastOutLinearInInterpolator
-import android.support.v7.app.AppCompatActivity
+import androidx.interpolator.view.animation.FastOutLinearInInterpolator
+import androidx.appcompat.app.AppCompatActivity
 import android.view.animation.BounceInterpolator
 import android.view.animation.DecelerateInterpolator
 import android.view.animation.OvershootInterpolator
