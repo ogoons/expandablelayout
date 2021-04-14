@@ -20,7 +20,7 @@ allprojects {
 Step 2. Add the dependency
 ```
 dependencies {
-  implementation 'com.github.ogoons:expandable-layout:1.0.2'
+  implementation 'com.github.ogoons:expandable-layout:1.0.3'
 }
 ```
 
