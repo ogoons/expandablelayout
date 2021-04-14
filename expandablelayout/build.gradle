@@ -63,7 +63,7 @@ afterEvaluate {
                 // Applies the component for the debug build variant.
                 from components.debug
 
-                groupId = 'com.example.MyLibrary'
+                groupId = 'com.ogoons.expandablelayout'
                 artifactId = 'expandable-layout-debug'
                 version = '1.0.2'
             }
