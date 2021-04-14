@@ -55,7 +55,7 @@ afterEvaluate {
 
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.ogoons.expandablelayout'
-                artifactId = 'expandable-layout'
+                artifactId = 'expandablelayout'
                 version = '1.0.2'
             }
             // Creates a Maven publication called “debug”.
@@ -64,7 +64,7 @@ afterEvaluate {
                 from components.debug
 
                 groupId = 'com.ogoons.expandablelayout'
-                artifactId = 'expandable-layout-debug'
+                artifactId = 'expandablelayout-debug'
                 version = '1.0.2'
             }
         }
