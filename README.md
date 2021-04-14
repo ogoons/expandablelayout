@@ -1,4 +1,4 @@
-# expandablelayout 
+# ExpandableLayout
 [![](https://jitpack.io/v/ogoons/expandable-layout.svg)](https://jitpack.io/#ogoons/expandable-layout)
 
 Android Expandable Layout 
