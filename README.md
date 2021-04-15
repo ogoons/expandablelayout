@@ -7,7 +7,7 @@ Android ExpandableLayout based on FrameLayout
 <img src="./demo/demo.gif">
 
 ## How to
-Step1. Add it in your root build.gradle at the end of repositories:
+Step 1. Add it in your root build.gradle at the end of repositories:
 
 ```
 allprojects {
