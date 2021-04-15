@@ -1,7 +1,9 @@
 # ExpandableLayout
 [![](https://jitpack.io/v/ogoons/expandablelayout.svg)](https://jitpack.io/#ogoons/expandablelayout)
 
-Android ExpandableLayout based on FrameLayout
+- Android ExpandableLayout based on FrameLayout
+- Embedded in <a href="https://play.google.com/store/apps/details?id=com.nexstreaming.app.kinemasterfree" target="_blank">KineMaster</a>
+
 
 ## Demo
 <img src="./demo/demo.gif">
