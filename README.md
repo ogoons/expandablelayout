@@ -1,7 +1,7 @@
 # ExpandableLayout
 [![](https://jitpack.io/v/ogoons/expandablelayout.svg)](https://jitpack.io/#ogoons/expandablelayout)
 
-Android Expandable Layout
+Android ExpandableLayout based on FrameLayout
 
 ## Demo
 <img src="./demo/demo.gif">
