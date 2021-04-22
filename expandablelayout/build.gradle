@@ -3,8 +3,8 @@ apply plugin: 'kotlin-android'
 apply plugin: 'maven-publish'
 apply plugin: 'com.github.dcendents.android-maven'
 
-group = 'com.ogoons.expandablelayout'
-version = '1.0.4'
+group = 'com.github.ogoons.expandablelayout'
+version = '1.0.5'
 
 android {
     compileSdkVersion 30
@@ -12,8 +12,8 @@ android {
     defaultConfig {
         minSdkVersion 14
         targetSdkVersion 30
-        versionCode 4
-        versionName "1.0.4"
+        versionCode 5
+        versionName "1.0.5"
 
         testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
     }
@@ -56,7 +56,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.github.ogoons.expandablelayout'
                 artifactId = 'expandablelayout'
-                version = '1.0.4'
+                version = '1.0.5'
             }
             // Creates a Maven publication called “debug”.
             debug(MavenPublication) {
@@ -65,7 +65,7 @@ afterEvaluate {
 
                 groupId = 'com.github.ogoons.expandablelayout'
                 artifactId = 'expandablelayout-debug'
-                version = '1.0.4'
+                version = '1.0.5'
             }
         }
     }
